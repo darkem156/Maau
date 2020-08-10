@@ -1,0 +1,19 @@
+body
+{
+  //background: linear-gradient(to right, #3444f4, #12234f);
+  background: black;
+  overflow: hidden;
+}
+
+#canvas
+{
+  white-space: nowrap;
+  padding: 0;
+  margin: auto;
+  display: block;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
