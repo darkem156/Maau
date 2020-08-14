@@ -91,12 +91,15 @@ class Cubo {
       this.limiteF += speed;
     }
   }
+  updatePosition()
+  {
+    this.modificarPosicion();
+    this.modificarPosicionIzq();
+  }
 }
 
 function comprobar(a)
 {
-  //cubo
-  a.limiteF = a.x + parseInt((137 * escala));
   if ((maau.limiteF + speed > a.x && maau.x < a.limiteF) && maau.y > a.y - parseInt((110 * escala)))
   {
     spaceFree = false;
@@ -108,8 +111,6 @@ function comprobar(a)
 }
 function comprobarIzq(a)
 {
-  //cubo
-  a.limiteF = a.x + parseInt((137 * escala));
   if (maau.x - speed < a.limiteF && maau.x >= a.limiteF && maau.y > a.y - parseInt((110 * escala)))
   {
     spaceFreeIzq = false;
@@ -120,8 +121,6 @@ function comprobarIzq(a)
 }
 function comprobarAltura(a)
 {
-  //cubo
-  a.limiteF = a.x + parseInt((137 * escala));
   if (maau.limiteF + (speed) > a.x && maau.x - speed < a.limiteF)
   {
     sueloPos = a.altura;
@@ -248,31 +247,17 @@ function posicionCatsupIzq()
 
 function posicionCubo()
 {
-  cubo.modificarPosicion();
-  cubo1.modificarPosicion();
-  cubo3.modificarPosicion();
-  cubo4.modificarPosicion();
-  cubo5.modificarPosicion();
-  cubo6.modificarPosicion();
-  cubo7.modificarPosicion();
-  cubo8.modificarPosicion();
-  cubo9.modificarPosicion();
-  cubo10.modificarPosicion();
-  cubo11.modificarPosicion();
-}
-function posicionCuboIzq()
-{
-  cubo.modificarPosicionIzq();
-  cubo1.modificarPosicionIzq();
-  cubo3.modificarPosicionIzq();
-  cubo4.modificarPosicionIzq();
-  cubo5.modificarPosicionIzq();
-  cubo6.modificarPosicionIzq();
-  cubo7.modificarPosicionIzq();
-  cubo8.modificarPosicionIzq();
-  cubo9.modificarPosicionIzq();
-  cubo10.modificarPosicionIzq();
-  cubo11.modificarPosicionIzq();
+  cubo.updatePosition();
+  cubo1.updatePosition();
+  cubo3.updatePosition();
+  cubo4.updatePosition();
+  cubo5.updatePosition();
+  cubo6.updatePosition();
+  cubo7.updatePosition();
+  cubo8.updatePosition();
+  cubo9.updatePosition();
+  cubo10.updatePosition();
+  cubo11.updatePosition();
 }
 
 function funcionAltura()
@@ -563,7 +548,7 @@ function principal()
       //dibujarFlechas();
       dibujarLentes();
       dibujarEnemigos();
-      moverEnemigos();
+      //moverEnemigos();
   }
 }
 
@@ -636,8 +621,8 @@ function izquierda()
   if (sueloN > 0 || maau.y != parseInt(268 * escala))
   {
     posicionCatsupIzq();
-    posicionCuboIzq();
-    posicionEnemigoIzq();
+    posicionCubo();
+    posicionEnemigo();
     if (maau.x <= (canvas.width * .25) && mapaRecorte.x > 0)
     {
       mapaRecorte.x -= speed / escala;

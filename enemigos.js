@@ -79,38 +79,32 @@ class Enemigo extends Image
       }
     }
   }
+  updateEnem()
+  {
+    this.dibujarEnem();
+    this.moverse();
+  }
+  updatePosition()
+  {
+    this.modificarPosicion();
+    this.modificarPosicionIzq();
+  }
 }
 
 function dibujarEnemigos()
 {
-  enemigo1.dibujarEnem();
-  enemigo2.dibujarEnem();
-  enemigo3.dibujarEnem();
-  enemigo4.dibujarEnem();
+  enemigo1.updateEnem();
+  enemigo2.updateEnem();
+  enemigo3.updateEnem();
+  enemigo4.updateEnem();
 }
 
 function posicionEnemigo()
 {
-  enemigo1.modificarPosicion();
-  enemigo2.modificarPosicion();
-  enemigo3.modificarPosicion();
-  enemigo4.modificarPosicion();
-}
-
-function posicionEnemigoIzq()
-{
-  enemigo1.modificarPosicionIzq();
-  enemigo2.modificarPosicionIzq();
-  enemigo3.modificarPosicionIzq();
-  enemigo4.modificarPosicionIzq();
-}
-
-function moverEnemigos()
-{
-  enemigo1.moverse();
-  enemigo2.moverse();
-  enemigo3.moverse();
-  enemigo4.moverse();
+  enemigo1.updatePosition();
+  enemigo2.updatePosition();
+  enemigo3.updatePosition();
+  enemigo4.updatePosition();
 }
 
 function comprobarEnemigo(a, b)
@@ -129,8 +123,6 @@ function comprobarEnemigo(a, b)
 
 function comprobarIzqEnemigo(a, b)
 {
-  //cubo
-  a.limiteF = a.x + parseInt((137 * escala));
   if (b.z - speed / 2 < a.limiteF && b.z >= a.limiteF && b.v > a.y - parseInt((110 * escala)))
   {
     spaceFreeIzqEnemigo = false;
