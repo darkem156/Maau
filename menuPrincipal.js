@@ -77,7 +77,7 @@ canvas.addEventListener('click', function(evt)
           }
         }
       }
-      if (mousePos.x >= xMusica && mousePos.x <= xFinalMusica && (ajustesBoton || jugando))
+      if (mousePos.x >= xMusica && mousePos.x <= xFinalMusica && (ajustesBoton || pausa))
       {
         if (mousePos.y >= yMusica && mousePos.y <= yFinalMusica)
         {
@@ -96,7 +96,7 @@ canvas.addEventListener('click', function(evt)
           ajustes();
         }
       }
-      if (mousePos.x >= xMusicaMas && mousePos.x <= xFinalMusicaMas && (ajustesBoton || jugando))
+      if (mousePos.x >= xMusicaMas && mousePos.x <= xFinalMusicaMas && (ajustesBoton || pausa))
       {
         if (mousePos.y >= yMusicaMas && mousePos.y <= yFinalMusicaMas)
         {

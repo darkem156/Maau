@@ -120,12 +120,12 @@ function comprobarIzq(a)
 }
 function comprobarAltura(a)
 {
-  //cubo
-  a.limiteF = a.x + parseInt((137 * escala));
   if (maau.limiteF + (speed) > a.x && maau.x - speed < a.limiteF)
   {
     sueloPos = a.altura;
-  } else {
+  }
+  else
+  {
     sueloPos = 1;
   }
 
@@ -245,45 +245,31 @@ function posicionCuboIzq()
     arrayCubos[i].modificarPosicionIzq();
   }
 }
-
+var nose = true;
 function funcionAltura()
 {
-  if
-  (
-    comprobar(cubo) &&
-    comprobar(cubo1) &&
-    comprobar(cubo6) &&
-    comprobar(cubo3) &&
-    comprobar(cubo4) &&
-    comprobar(cubo7) &&
-    comprobar(cubo8) &&
-    comprobar(cubo9) &&
-    comprobar(cubo10) &&
-    comprobar(cubo11)
-  )
-  {
-    spaceFree2 = true;
-  } else {
-    spaceFree2 = false;
-  }
 
-  if
-  (
-    comprobarIzq(cubo) &&
-    comprobarIzq(cubo1) &&
-    comprobarIzq(cubo6) &&
-    comprobarIzq(cubo3) &&
-    comprobarIzq(cubo4) &&
-    comprobarIzq(cubo7) &&
-    comprobarIzq(cubo8) &&
-    comprobarIzq(cubo9) &&
-    comprobarIzq(cubo10) &&
-    comprobarIzq(cubo11)
-  )
+  for (var i = 0; i < arrayCubos.length; i++)
   {
-    spaceFreeIzq2 = true;
-  } else {
-    spaceFreeIzq2 = false;
+    if (comprobar(arrayCubos[i]))
+    {
+      spaceFree2 = true;
+    }
+    else
+    {
+      spaceFree2 = false;
+      break;
+    }
+
+    if (comprobarIzq(arrayCubos[i]))
+    {
+      spaceFreeIzq2 = true;
+    }
+    else
+    {
+      spaceFreeIzq2 = false;
+      break;
+    }
   }
 
   if
@@ -523,15 +509,12 @@ function principal()
       dl.drawImage(mapa, mapaRecorte.x, 502, 4802, 1002, 0, 0, parseInt((4802 * escala)), parseInt((1002 * escala)));
       fuente = parseInt((90 * escala)) + "px sans-serif";
       dl.font = fuente;
-      //dl.fillText(cantidadCatsup, parseInt((110 * escala)), parseInt((130 * escala)));
       dibujarCantCatsup();
       dl.shadowOffsetX = 0;
       dl.shadowOffsetY = 0;
       dl.shadowBlur = 0;
       dl.drawImage(imgNormal, 160, 0, 659, 758, maau.x, maau.y, parseInt((130 * escala)), parseInt((130 * escala)));
       dl.drawImage(catsup, 0, 0, 250, 600, parseInt((30 * escala)), parseInt((20 * escala)), parseInt((60 * escala)), parseInt((144 * escala))); // cambia segun la cantidad de catsup
-      //dl.drawImage(imgCubo, 0, 0, 120, 120, cubo8.x, cubo8.y, 120, 120);
-      //dibujarFlechas();
       dibujarLentes();
       dibujarEnemigos();
   }
