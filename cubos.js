@@ -43,4 +43,39 @@ function nivel1()
   mapa = new Image();
   mapa.src = "assets/mapa.png";
   //////////////////////////////////////////////////////////////////////////////////
+  arrayEnem =
+  [
+    enemigo1,
+    enemigo2,
+    enemigo3,
+    enemigo4
+  ];
+
+  arrayCubos =
+  [
+    cubo,
+    cubo1,
+    cubo3,
+    cubo4,
+    cubo5,
+    cubo6,
+    cubo7,
+    cubo8,
+    cubo9,
+    cubo10,
+    cubo11
+  ];
+
+  arrayCatsup =
+  [
+    catsupPrueba,
+    catsup2,
+    catsup3,
+    catsup4,
+    catsup5,
+    catsup6,
+    catsup7,
+    catsup8,
+    catsup9
+  ]
 }

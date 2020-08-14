@@ -91,15 +91,12 @@ class Cubo {
       this.limiteF += speed;
     }
   }
-  updatePosition()
-  {
-    this.modificarPosicion();
-    this.modificarPosicionIzq();
-  }
 }
 
 function comprobar(a)
 {
+  //cubo
+  a.limiteF = a.x + parseInt((137 * escala));
   if ((maau.limiteF + speed > a.x && maau.x < a.limiteF) && maau.y > a.y - parseInt((110 * escala)))
   {
     spaceFree = false;
@@ -111,6 +108,8 @@ function comprobar(a)
 }
 function comprobarIzq(a)
 {
+  //cubo
+  a.limiteF = a.x + parseInt((137 * escala));
   if (maau.x - speed < a.limiteF && maau.x >= a.limiteF && maau.y > a.y - parseInt((110 * escala)))
   {
     spaceFreeIzq = false;
@@ -121,6 +120,8 @@ function comprobarIzq(a)
 }
 function comprobarAltura(a)
 {
+  //cubo
+  a.limiteF = a.x + parseInt((137 * escala));
   if (maau.limiteF + (speed) > a.x && maau.x - speed < a.limiteF)
   {
     sueloPos = a.altura;
@@ -209,55 +210,40 @@ class Bala
 
 function funcionCatsup()
 {
-  catsupPrueba.conseguirCatsup();
-  catsup2.conseguirCatsup();
-  catsup3.conseguirCatsup();
-  catsup4.conseguirCatsup();
-  catsup5.conseguirCatsup();
-  catsup6.conseguirCatsup();
-  catsup7.conseguirCatsup();
-  catsup8.conseguirCatsup();
-  catsup9.conseguirCatsup();
+  for (var i = 0; i < arrayCatsup.length; i++)
+  {
+    arrayCatsup[i].conseguirCatsup();
+  }
 }
 
 function posicionCatsup()
 {
-  catsupPrueba.modificarPosicion();
-  catsup3.modificarPosicion();
-  catsup2.modificarPosicion();
-  catsup4.modificarPosicion();
-  catsup5.modificarPosicion();
-  catsup6.modificarPosicion();
-  catsup7.modificarPosicion();
-  catsup8.modificarPosicion();
-  catsup9.modificarPosicion();
+  for (var i = 0; i < arrayCatsup.length; i++)
+  {
+    arrayCatsup[i].modificarPosicion();
+  }
 }
 function posicionCatsupIzq()
 {
-  catsupPrueba.modificarPosicionIzq();
-  catsup3.modificarPosicionIzq();
-  catsup2.modificarPosicionIzq();
-  catsup4.modificarPosicionIzq();
-  catsup5.modificarPosicionIzq();
-  catsup6.modificarPosicionIzq();
-  catsup7.modificarPosicionIzq();
-  catsup8.modificarPosicionIzq();
-  catsup9.modificarPosicionIzq();
+  for (var i = 0; i < arrayCatsup.length; i++)
+  {
+    arrayCatsup[i].modificarPosicionIzq();
+  }
 }
 
 function posicionCubo()
 {
-  cubo.updatePosition();
-  cubo1.updatePosition();
-  cubo3.updatePosition();
-  cubo4.updatePosition();
-  cubo5.updatePosition();
-  cubo6.updatePosition();
-  cubo7.updatePosition();
-  cubo8.updatePosition();
-  cubo9.updatePosition();
-  cubo10.updatePosition();
-  cubo11.updatePosition();
+  for (var i = 0; i < arrayCubos.length; i++)
+  {
+    arrayCubos[i].modificarPosicion();
+  }
+}
+function posicionCuboIzq()
+{
+  for (var i = 0; i < arrayCubos.length; i++)
+  {
+    arrayCubos[i].modificarPosicionIzq();
+  }
 }
 
 function funcionAltura()
@@ -548,7 +534,6 @@ function principal()
       //dibujarFlechas();
       dibujarLentes();
       dibujarEnemigos();
-      //moverEnemigos();
   }
 }
 
@@ -621,8 +606,8 @@ function izquierda()
   if (sueloN > 0 || maau.y != parseInt(268 * escala))
   {
     posicionCatsupIzq();
-    posicionCubo();
-    posicionEnemigo();
+    posicionCuboIzq();
+    posicionEnemigoIzq();
     if (maau.x <= (canvas.width * .25) && mapaRecorte.x > 0)
     {
       mapaRecorte.x -= speed / escala;

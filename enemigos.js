@@ -84,28 +84,32 @@ class Enemigo extends Image
     this.dibujarEnem();
     this.moverse();
   }
-  updatePosition()
-  {
-    this.modificarPosicion();
-    this.modificarPosicionIzq();
-  }
 }
 
 function dibujarEnemigos()
 {
-  enemigo1.updateEnem();
-  enemigo2.updateEnem();
-  enemigo3.updateEnem();
-  enemigo4.updateEnem();
+  for (var i = 0; i < arrayEnem.length; i++)
+  {
+    arrayEnem[i].updateEnem();
+  }
 }
 
 function posicionEnemigo()
 {
-  enemigo1.updatePosition();
-  enemigo2.updatePosition();
-  enemigo3.updatePosition();
-  enemigo4.updatePosition();
+  for (var i = 0; i < arrayEnem.length; i++)
+  {
+    arrayEnem[i].modificarPosicion();
+  }
 }
+
+function posicionEnemigoIzq()
+{
+  for (var i = 0; i < arrayEnem.length; i++)
+  {
+    arrayEnem[i].modificarPosicionIzq();
+  }
+}
+
 
 function comprobarEnemigo(a, b)
 {
@@ -123,6 +127,8 @@ function comprobarEnemigo(a, b)
 
 function comprobarIzqEnemigo(a, b)
 {
+  //cubo
+  a.limiteF = a.x + parseInt((137 * escala));
   if (b.z - speed / 2 < a.limiteF && b.z >= a.limiteF && b.v > a.y - parseInt((110 * escala)))
   {
     spaceFreeIzqEnemigo = false;
@@ -134,10 +140,10 @@ function comprobarIzqEnemigo(a, b)
 
 function matarEnemigos(a)
 {
-  morir(a, enemigo1);
-  morir(a, enemigo2);
-  morir(a, enemigo3);
-  morir(a, enemigo4);
+  for (var i = 0; i < arrayEnem.length; i++)
+  {
+    morir(a, arrayEnem[i]);
+  }
 }
 
 function morir(a, b)
